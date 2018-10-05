@@ -9,12 +9,22 @@
 </head>
 <body>
 <h1> This is Add Page</h1>
-    <form method="post" action="{{ route('store') }}" >
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+ <form method="post" action="{{ route('store') }}" >
         @csrf
         <input type="text" name="name" placeholder="Nhap ten">
         <input type="text" name="phone" placeholder="Nhap phone">
         <input type="text" name="email" placeholder="Nhap email">
         <input type="submit" value="Submit">
     </form>
+
 </body>
 </html>

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreBlogPost extends FormRequest
+class Create_Customer_Request extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class StoreBlogPost extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -32,6 +32,15 @@ class StoreBlogPost extends FormRequest
 
     public function messages()
     {
-
+        return[
+        'name.required' => "Name need a String",
+        'phone.required' => "Phone need a Integer",
+        'email.required' => "email need a email not null",
+        'name.max' => 'Max 50 ',
+        'phone.max' => 'Max 11',
+        'email.max' => 'max 30',
+        'phone.integer' => 'need a integer',
+        'email.email' => 'need a email'
+        ];
     }
 }
