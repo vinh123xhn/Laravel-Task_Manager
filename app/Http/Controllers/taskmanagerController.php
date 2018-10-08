@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\App;
 class taskmanagerController extends Controller
 {
     public function index(){
-        $managers = taskmanagerModel::all();
+        $managers = taskmanagerModel::paginate(10);
         return view('index', compact('managers'));
     }
 
@@ -55,7 +55,7 @@ class taskmanagerController extends Controller
     }
 
     public function searchkey(Request $request) {
-        $lists =  taskmanagerModel::where('name','like',"%".$request->search."%")
+        $lists =  taskmanagerModel::where('user_name','like',"%".$request->search."%")
             ->orWhere('phone', 'like', "%".$request->search."%")
             ->orWhere('id', 'like', "%".$request->search."%")
             ->orWhere('email', 'like', "%".$request->search."%")

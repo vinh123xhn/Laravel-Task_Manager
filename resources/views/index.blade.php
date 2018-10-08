@@ -1,6 +1,7 @@
 <?php
     use App\Model\taskmanagerModel;
     use App\Http\Controllers\taskmanagerController;
+    use Illuminate\Pagination\LengthAwarePaginator;
 ?>
 
 <!doctype html>
@@ -42,6 +43,7 @@
         @endforeach
     </tbody>
 </table>
+{{ $managers->appends(request()->query()) }}
 <a href="{{route('create')}}">Add</a>
 </body>
 </html>
